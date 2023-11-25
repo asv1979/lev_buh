@@ -1,0 +1,38 @@
+path: acceptance
+actor: AcceptanceTester
+modules:
+  enabled:
+    - WebDriver:
+        url: http://nginx/index.php
+        host: chrome
+        port: 4444
+        window_size: 2000x1600
+        browser: chrome
+        wait: 3
+        capabilities:
+          unexpectedAlertBehaviour: 'ignore'
+          chromeOptions:
+            args: [ "--no-sandbox" ]
+    - Db:
+        dsn: 'pgsql:host=lev-db;port=5432;dbname=lev_db'
+        user: 'postgres_test'
+        password: 'password_test'
+        transaction: false
+    - \Helper\Acceptance
+step_decorators:
+  - \Codeception\Step\TryTo
+extensions:
+  enabled:
+    - Codeception\Extension\Recorder:
+        delete_successful: true
+        ignore_steps: [
+          have,
+          grab*,
+          wait,
+          loadSessionSnapshot,
+          deleteSessionSnapshot,
+          saveSessionSnapshot,
+          haveInDatabase,
+          clearTable
+        ]
+        delete_orphaned: true

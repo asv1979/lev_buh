@@ -1,0 +1,58 @@
+limit_conn_zone $binary_remote_addr zone=perip:10m;
+server {
+   server_name back.lev_buh.local;
+   charset utf-8;
+   client_max_body_size 128M;
+   sendfile off;
+
+   listen 80;
+   root        /var/www/backend/web;
+   index       index.php;
+
+   location / {
+       # Redirect everything that isn't a real file to index.php
+       try_files $uri $uri/ /index.php$is_args$args;
+   }
+
+   location ~ \.php$ {
+       include fastcgi_params;
+       fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+       fastcgi_pass ${PHP_FPM_HOST}:${PHP_FPM_PORT};
+       try_files $uri =404;
+   }
+
+   location ~ /\.(ht|svn|git) {
+       deny all;
+   }
+}
+
+server {
+   server_name lev_buh.local;
+   charset utf-8;
+   client_max_body_size 128M;
+   sendfile off;
+
+   error_log /tmp/lev-local-error.log;
+   access_log /tmp/lev-local-access.log;
+
+   listen 80;
+
+   root        /var/www/frontend/web;
+   index       index.php;
+
+   location / {
+       # Redirect everything that isn't a real file to index.php
+       try_files $uri $uri/ /index.php$is_args$args;
+   }
+
+   location ~ \.php$ {
+       include fastcgi_params;
+       fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+       fastcgi_pass ${PHP_FPM_HOST}:${PHP_FPM_PORT};
+       try_files $uri =404;
+   }
+
+   location ~ /\.(ht|svn|git) {
+       deny all;
+   }
+}
