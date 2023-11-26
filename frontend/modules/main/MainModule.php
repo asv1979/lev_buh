@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace frontend\modules\test;
+namespace frontend\modules\main;
 
 use yii\base\Module as BaseModule;
 
-final class TestModule extends BaseModule
+final class MainModule extends BaseModule
 {
-    public $controllerNamespace = 'frontend\modules\test\controllers';
+    public $controllerNamespace = 'frontend\modules\main\controllers';
 
     /**
      * @inheritDoc

@@ -93,7 +93,7 @@ a.desc:after {
 /* style breadcrumb widget as in previous bootstrap versions */
 .breadcrumb {
     background-color: var(--bs-gray-200);
-    border-radius: .25rem;
+    border-radius: .15rem;
     padding: .75rem 1rem;
 }
 

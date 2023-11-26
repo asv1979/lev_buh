@@ -1,6 +1,6 @@
 <?php
 
-use frontend\modules\test\TestModule;
+use frontend\modules\main\MainModule;
 
 $params = array_merge(
     require __DIR__ . '/../../common/config/params.php',
@@ -42,15 +42,16 @@ return [
             ],
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'main/home/error',
         ],
         'urlManager' => [
             'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-//                'test' => 'test/test/index',
-//                '<action:(about|contact|signup|login)>' => 'site/<action>',
+                '' => 'main/home/index',
+                'contact' => 'main/contact/index',
+                'about' => 'main/about/index',
 //                '<controller:\w+>/<id:\d+>' => '<controller>/view',
 //                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
 //                '<controller:\w+>/<action:\w+>' => '<controller>/<action>'
@@ -67,8 +68,9 @@ return [
             'class' => '\yii\gii\Module',
             //'allowedIPs' => ['127.0.0.1', '::1'],
         ],
-        'test' => [
-            'class' => TestModule::class
+        'main' => [
+            'class' => MainModule::class,
+            'layout' => '@frontend/modules/main/views/layouts/main'
         ],
     ],
     'params' => $params,
