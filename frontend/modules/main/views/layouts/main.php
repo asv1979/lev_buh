@@ -7,10 +7,8 @@ use common\widgets\Alert;
 use frontend\modules\main\assets\AppAsset;
 use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
-use yii\bootstrap5\Nav;
-use yii\bootstrap5\NavBar;
 
-AppAsset::register($this);
+$myAssetBundle = AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -26,27 +24,44 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <header>
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::t('app', 'Бухгалтер Лена'),
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'buh-navbar navbar navbar-expand-md navbar-dark bg-dark fixed-top',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/']],
-        ['label' => 'About', 'url' => ['/about']],
-        ['label' => 'Contact', 'url' => ['/contact']],
-    ];
-
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav me-auto mb-2 mb-md-0'],
-        'items' => $menuItems,
-    ]);
-
-    NavBar::end();
-    ?>
+    <div class="navigation-bar">
+        <nav class="navbar navbar-expand-lg navbar-light lev-bg fixed-top navbar-fixed-top">
+            <div class="container">
+                <a class="navbar-brand d-md-block" href="/">
+                    <?= Html::img($myAssetBundle->baseUrl . '/images/icon.png') ?>
+                </a>
+                <div class="navbar-brand text-white text-left d-none d-md-block">
+                        <?= Yii::t('app','Бухгалтерська') ?></br>
+                        <?= Yii::t('app','агенція "ЛЕВ"') ?></br>
+                    <small>
+                        <?= Yii::t('app','наш супровід ваш спокій') ?>
+                    </small>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarMenuBlock">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <?= Html::a(Yii::t('app','Головна'), ['/'], ['class' => 'nav-link main']) ?>
+                        </li>
+                        <li class="nav-item">
+                            <?= Html::a(Yii::t('app','Послуги'), ['/serve'], ['class' => 'nav-link serve']) ?>
+                        </li>
+                        <li class="nav-item">
+                            <?= Html::a(Yii::t('app','Ціни'), ['/price'], ['class' => 'nav-link price']) ?>
+                        </li>
+                        <li class="nav-item">
+                            <?= Html::a(Yii::t('app','Контакти'), ['/contact'], ['class' => 'nav-link contact']) ?>
+                        </li>
+                    </ul>
+                </div>
+                <div class="social-icons d-none d-sm-block">
+                    <div  class="text-white text-center">
+                        <small class="d-none d-md-block"><?= Yii::t('app','Зв\'язок') ?></br></small>
+                        <a class="text-decoration-none text-white" href="tel:+380986073304">098-607-33-04</br></a>
+                        <small class="d-none d-md-block"><small>Пн.-Пт. з 09:00 до 18:00</small></small>
+                    </div>
+                </div>
+            </div>
+        </nav>
 </header>
 
 <main role="main" class="flex-shrink-0">
