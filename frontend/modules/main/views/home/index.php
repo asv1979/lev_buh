@@ -2,7 +2,7 @@
 
 /** @var yii\web\View $this */
 
-$this->title = 'Home Page';
+$this->title = Yii::t('app', 'ЛЕВ Бухгалтерська агенція');
 ?>
 <div class="site-index">
     <div class="p-5 mb-4 bg-transparent rounded-3">
