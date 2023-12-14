@@ -28,15 +28,8 @@ $myAssetBundle = AppAsset::register($this);
         <nav class="navbar navbar-expand-lg navbar-light lev-bg fixed-top navbar-fixed-top">
             <div class="container">
                 <a class="navbar-brand d-md-block" href="/">
-                    <?= Html::img($myAssetBundle->baseUrl . '/images/icon.png') ?>
+                    <?= Html::img($myAssetBundle->baseUrl . '/images/footer.png') ?>
                 </a>
-                <div class="navbar-brand text-white text-left d-none d-md-block">
-                    <small>
-                        ЛЕВ</br>
-                        <?= Yii::t('app','Бухгалтерська') ?></br>
-                        <?= Yii::t('app','агенція') ?>
-                    </small>
-                </div>
                 <div class="collapse navbar-collapse" id="navbarMenuBlock">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
