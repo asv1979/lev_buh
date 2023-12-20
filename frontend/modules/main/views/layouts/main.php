@@ -65,6 +65,30 @@ $myAssetBundle = AppAsset::register($this);
             </nav>
     </header>
 
+    <div class='container-fluid my-carousel'>
+        <div id='carouselExampleControls' class='carousel slide carousel-fade' data-bs-ride='carousel'>
+            <div class='carousel-inner'>
+                <div class='carousel-item active'>
+                    <?= Html::img('images/carucel/1.png', ['class' => 'd-block w-100']) ?>
+                </div>
+                <div class='carousel-item'>
+                    <?= Html::img('images/carucel/2.png', ['class' => 'd-block w-100']) ?>
+                </div>
+                <div class='carousel-item'>
+                    <?= Html::img('images/carucel/3.png', ['class' => 'd-block w-100']) ?>
+                </div>
+            </div>
+            <button class='carousel-control-prev' type='button' data-bs-target='#carouselExampleControls' data-bs-slide='prev'>
+                <span class='carousel-control-prev-icon' aria-hidden='true'></span>
+                <span class='visually-hidden'>Previous</span>
+            </button>
+            <button class='carousel-control-next' type='button' data-bs-target='#carouselExampleControls' data-bs-slide='next'>
+                <span class='carousel-control-next-icon' aria-hidden='true'></span>
+                <span class='visually-hidden'>Next</span>
+            </button>
+        </div>
+    </div>
+
     <main role='main' class='flex-shrink-0'>
         <div class='container'>
             <?= Breadcrumbs::widget([
@@ -152,8 +176,8 @@ $myAssetBundle = AppAsset::register($this);
             </svg>
         </div>
     </footer>
-
     <?php $this->endBody() ?>
     </body>
     </html>
+
 <?php $this->endPage();

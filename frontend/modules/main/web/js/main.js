@@ -8,4 +8,10 @@ jQuery(function ($) {
 
         $(`a.nav-link.${action}`).addClass('active');
     }
+
+    let myCarousel = document.querySelector('.my-carousel'),
+     carousel = new bootstrap.Carousel(myCarousel, {
+        interval: 200,
+        wrap: false
+    });
 });

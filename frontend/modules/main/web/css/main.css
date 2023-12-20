@@ -1,5 +1,5 @@
 main > .container {
-    padding: 150px 15px 20px;
+    padding: 0 15px 20px;
 }
 
 .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link:hover{
@@ -38,6 +38,23 @@ main > .container {
 
 .cw{
     color: white;
+}
+
+/* carusel */
+.carousel-indicators button{
+    background-color: #42826C !important;
+}
+
+.my-carousel {
+    padding: 120px 0 0;
+}
+
+.my-carousel .carousel-item{
+    max-height: 500px;
+}
+
+.my-carousel .carousel-item img{
+    object-fit: cover;
 }
 
 /* footer */
